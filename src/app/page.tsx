@@ -25,9 +25,6 @@ export default function Login() {
 
   try {
     const response = await loginUser(email, password); // 👈 API call
-      // Backend should have already set the secure cookie
-      //  console.log("response is: ", response);
-      alert(response.data.route )
     if (response.data.success){
       router.push(response.data.route)
     }

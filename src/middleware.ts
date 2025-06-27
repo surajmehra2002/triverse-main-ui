@@ -34,7 +34,6 @@ export async function middleware(request: NextRequest) {
 // console.log("payload is: ", payload)
     const role = payload.role;
     
-
     if (pathname.startsWith('/triverse-dashboard') && role !== 'TRIVERSE_SUPER_ADMIN') {
       return NextResponse.redirect(new URL('/', request.url));
     }
