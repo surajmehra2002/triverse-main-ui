@@ -23,9 +23,13 @@ export default function Login() {
     setLoading(true);
     setError('');
 
+
+
   try {
     const response = await loginUser(email, password); // 👈 API call
+    // alert(response.data.message)
     if (response.data.success){
+      // alert("Login successful, redirecting to dashboard: " + response.data.route);
       router.push(response.data.route)
     }
     else router.push("/")

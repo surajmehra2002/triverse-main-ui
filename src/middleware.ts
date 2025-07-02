@@ -8,10 +8,9 @@ const protectedRoutes = [
 ];
 
 const getJwtSecretKey = () => {
-  // const secret = process.env.JWT_SECRET_KEY;
-  const secret = "guidonasoftpedia";
-  if (!secret) throw new Error("JWT_SECRET_KEY is not defined");
-  return new TextEncoder().encode(secret);
+  const secret = process.env.JWT_SECRET_KEY;
+    if (!secret) throw new Error("JWT_SECRET_KEY is not defined");
+    return new TextEncoder().encode(secret);
 };
 
 export async function middleware(request: NextRequest) {
@@ -24,7 +23,7 @@ export async function middleware(request: NextRequest) {
 
   const token = request.cookies.get('token')?.value;
 
-  // console.log('token is: ', token)
+  console.log('token is: ', token)
   // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsInJvbGUiOiJUUklWRVJTRV9TVVBFUl9BRE1JTiIsImlhdCI6MTc1MDkyMTMyOSwiZXhwIjoxNzUxMzUzMzI5fQ.ez_9XC0ipGRg08KSRaY7lpizVgu_8X-yRJtutFMHTlk        ";
 
   if (!token) return NextResponse.redirect(new URL('/', request.url));
@@ -52,4 +51,3 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 }
-// suraj testing
